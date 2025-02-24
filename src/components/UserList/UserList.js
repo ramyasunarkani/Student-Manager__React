@@ -1,10 +1,21 @@
 import React from "react";
- const UserList=()=>{
-    return (
-        <>
-        <h2>All Students</h2>
-        </>
-    );
- }
+import Button from "../UI/Button";
 
- export default  UserList;
+const UserList = ({ users, onDelete, onEdit }) => {
+  return (
+    <>
+      <h2>All Students</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.name} {user.phone} {user.address}
+            <Button type="button" onClick={() => onDelete(user.id)}>Delete</Button>
+            <Button type="button" onClick={() => onEdit(user.id)}>Edit</Button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default UserList;
